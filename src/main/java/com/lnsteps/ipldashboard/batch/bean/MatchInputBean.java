@@ -27,6 +27,14 @@ public class MatchInputBean {
 	private String method;
 	private String umpire1;
 	private String umpire2;
+	@Override
+	public String toString() {
+		return "MatchInputBean [id=" + id + ", city=" + city + ", date=" + date + ", player_of_match=" + player_of_match
+				+ ", venue=" + venue + ", neutral_venue=" + neutral_venue + ", team1=" + team1 + ", team2=" + team2
+				+ ", toss_winner=" + toss_winner + ", toss_decision=" + toss_decision + ", winner=" + winner
+				+ ", result=" + result + ", result_margin=" + result_margin + ", eliminator=" + eliminator + ", method="
+				+ method + ", umpire1=" + umpire1 + ", umpire2=" + umpire2 + "]";
+	}
 	public String getId() {
 		return id;
 	}
