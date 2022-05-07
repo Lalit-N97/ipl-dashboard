@@ -23,6 +23,12 @@ public class TeamEntity {
 		return id;
 	}
 
+	@Override
+	public String toString() {
+		return "TeamEntity [id=" + id + ", teamName=" + teamName + ", totalMatches=" + totalMatches + ", totalWins="
+				+ totalWins + ", matches=" + matches + "]";
+	}
+
 	public void setId(long id) {
 		this.id = id;
 	}

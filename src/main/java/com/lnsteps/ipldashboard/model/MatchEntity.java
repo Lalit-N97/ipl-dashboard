@@ -21,6 +21,14 @@ public class MatchEntity {
 		this.id = id;
 	}
 
+	@Override
+	public String toString() {
+		return "MatchEntity [id=" + id + ", city=" + city + ", date=" + date + ", playerOfMatch=" + playerOfMatch
+				+ ", venue=" + venue + ", team1=" + team1 + ", team2=" + team2 + ", tossWinner=" + tossWinner
+				+ ", tossDecision=" + tossDecision + ", matchWinner=" + matchWinner + ", result=" + result
+				+ ", resultMargin=" + resultMargin + ", umpire1=" + umpire1 + ", umpire2=" + umpire2 + "]";
+	}
+
 	public String getCity() {
 		return city;
 	}
