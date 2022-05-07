@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.task.SimpleAsyncTaskExecutor;
+import org.springframework.core.task.TaskExecutor;
 
 import com.lnsteps.ipldashboard.batch.bean.MatchInputBean;
 import com.lnsteps.ipldashboard.batch.listener.JobCompletionNotificationListener;
@@ -66,6 +68,14 @@ public class BatchConfig {
 	@Bean
 	public Step step1() {
 		return stepBuilderFactory.get("step1").<MatchInputBean, MatchEntity>chunk(10).reader(reader())
-				.processor(processor()).writer(writer()).build();
+				.processor(processor()).writer(writer()).taskExecutor(taskExecutor()).build();
 	}
+
+	@Bean
+	public TaskExecutor taskExecutor() {
+		SimpleAsyncTaskExecutor asyncTaskExecutor = new SimpleAsyncTaskExecutor();
+		asyncTaskExecutor.setConcurrencyLimit(5); // spawn 5 threads to perform that step (divide the task to 5 people)
+		return asyncTaskExecutor;
+	}
+
 }
