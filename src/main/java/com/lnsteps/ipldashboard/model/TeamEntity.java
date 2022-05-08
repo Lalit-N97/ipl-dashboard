@@ -19,6 +19,13 @@ public class TeamEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	private String teamName;
+	private long totalMatches;
+	private long totalWins;
+
+	@Transient
+	private List<MatchEntity> matches;
+
 	public long getId() {
 		return id;
 	}
@@ -64,14 +71,7 @@ public class TeamEntity {
 	public void setMatches(List<MatchEntity> matches) {
 		this.matches = matches;
 	}
-
-	private String teamName;
-	private long totalMatches;
-	private long totalWins;
-
-	@Transient
-	private List<MatchEntity> matches;
-
+	
 	public TeamEntity(String teamName, long totalMatches) {
 		this.teamName = teamName;
 		this.totalMatches = totalMatches;
