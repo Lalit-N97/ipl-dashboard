@@ -72,6 +72,8 @@ public class TeamEntity {
 		this.matches = matches;
 	}
 	
+	public TeamEntity() {}
+	
 	public TeamEntity(String teamName, long totalMatches) {
 		this.teamName = teamName;
 		this.totalMatches = totalMatches;

@@ -23,11 +23,6 @@ public class TeamController {
 	@Autowired
 	private MatchRepository matchRepository;
 
-	public TeamController(TeamRepository teamRepository, MatchRepository matchRepository) {
-		this.teamRepository = teamRepository;
-		this.matchRepository = matchRepository;
-	}
-
 	@GetMapping("/team")
 	public Iterable<TeamEntity> getAllTeam() {
 		return this.teamRepository.findAll();
@@ -41,7 +36,7 @@ public class TeamController {
 	}
 
 	@GetMapping("/team/{teamName}/matches")
-	public List<MatchEntity> getMatchesForTeam(@PathVariable String teamName, @RequestParam int year) {
+	public List<MatchEntity> getMatchesForTeam(@PathVariable String teamName, @RequestParam("yearofdate") int year) {
 		LocalDate startDate = LocalDate.of(year, 1, 1);
 		LocalDate endDate = LocalDate.of(year + 1, 1, 1);
 		return this.matchRepository.getMatchesByTeamBetweenDates(teamName, startDate, endDate);
